@@ -13,10 +13,7 @@ class Hangry < Sinatra::Base
   get "/restaurants" do
     content_type :json
 
-    authentication = YAML.load_file(File.expand_path("config/access.yml", __dir__))
-    consumer = OAuth::Consumer.new authentication["key"],
-                                   authentication["secret"],
-                                   {site: authentication["site"]}
+    consumer = OAuth::Consumer.new(ENV["FACTUAL_KEY"], ENV["FACTUAL_SECRET"])
     token = OAuth::AccessToken.new(consumer)
 
     response = token.get("http://api.v3.factual.com/t/restaurants-us?q=Boulder&limit=50")
