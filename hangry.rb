@@ -4,6 +4,8 @@ require "yaml"
 require "haml"
 require "json"
 
+require_relative "lib/location_service"
+
 class Hangry < Sinatra::Base
   get "/" do
     location = "Boulder"
@@ -16,7 +18,23 @@ class Hangry < Sinatra::Base
     consumer = OAuth::Consumer.new(ENV["FACTUAL_KEY"], ENV["FACTUAL_SECRET"])
     token = OAuth::AccessToken.new(consumer)
 
-    response = token.get("http://api.v3.factual.com/t/restaurants-us?q=Boulder&limit=50")
+    location = LocationService.find_location(request.ip)
+
+    geo_data = {
+      "$circle" => {
+        "$center" => [
+          location["latitude"],
+          location["longitude"]
+        ],
+        "$meters" => 5000
+      }
+    }
+
+    url = CGI.escape(geo_data.to_json)
+
+    response = token.get(
+      "http://api.v3.factual.com/t/restaurants-us?geo=#{url}&limit=50"
+    )
 
     restaurants = JSON.parse(response.body)["response"]["data"].inject([]) do |list, place|
       tags = place["cuisine"] || []
