@@ -6,19 +6,26 @@ require "json"
 
 class Hangry < Sinatra::Base
   get "/" do
+    location = "Boulder"
+    erb :index, locals: {location: location}
+  end
+
+  get "/restaurants" do
+    content_type :json
+
     authentication = YAML.load_file(File.expand_path("config/access.yml", __dir__))
     consumer = OAuth::Consumer.new authentication["key"],
-                                 authentication["secret"],
-                                 {site: authentication["site"]}
+                                   authentication["secret"],
+                                   {site: authentication["site"]}
     token = OAuth::AccessToken.new(consumer)
-    location = "Boulder"
 
-    response = token.get("http://api.v3.factual.com/t/restaurants-us?q=#{location}")
+    response = token.get("http://api.v3.factual.com/t/restaurants-us?q=Boulder&limit=50")
 
     restaurants = JSON.parse(response.body)["response"]["data"].inject([]) do |list, place|
-      list << {name: place["name"], tags: place["cuisine"]}
+      tags = place["cuisine"] || []
+      list << {name: place["name"], tags: tags}
     end
 
-    erb :index, locals: {location: location, restaurants: restaurants.to_json}
+    restaurants.to_json
   end
 end

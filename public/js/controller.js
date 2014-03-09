@@ -3,7 +3,7 @@ hangryApp.controller('PickerController', function ($scope, $http) {
     $scope.tagCollection = new Hangry.TagCollection([]);
     $scope.query_state = 'no match';
 
-    var deferred = $http.get('data/restaurants.json');
+    var deferred = $http.get('restaurants');
 
     deferred.success(function (response) {
         $scope.choiceCollection = new Hangry.ChoiceCollection(response);
