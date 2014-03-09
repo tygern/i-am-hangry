@@ -18,14 +18,18 @@ class Hangry < Sinatra::Base
     consumer = OAuth::Consumer.new(ENV["FACTUAL_KEY"], ENV["FACTUAL_SECRET"])
     token = OAuth::AccessToken.new(consumer)
 
-    location = LocationService.find_location(request.ip)
+    latitude = params["latitude"]
+    longitude = params["longitude"]
+
+    if latitude.nil? || latitude.empty? || longitude.nil? || longitude.empty?
+      location = LocationService.find_location(request.ip)
+      latitude = location["latitude"]
+      longitude = location["longitude"]
+    end
 
     geo_data = {
       "$circle" => {
-        "$center" => [
-          location["latitude"],
-          location["longitude"]
-        ],
+        "$center" => [latitude, longitude],
         "$meters" => 5000
       }
     }
