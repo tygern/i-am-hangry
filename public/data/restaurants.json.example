@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Fresh Thymes",
+        "tags": ["heathy", "walk", "cheap", "sit-down", "take-out"]
+    },
+    {
+        "name": "El Rey",
+        "tags": ["satisfying", "walk", "cheap", "Mexican", "sit-down"]
+    },
+    {
+        "name": "Khow Thai",
+        "tags": ["satisfying", "spicy", "cheap", "Thai", "take-out"]
+    },
+    {
+        "name": "Dagabi",
+        "tags": ["Italian", "delicious", "sit-down"]
+    },
+    {
+        "name": "The Cork",
+        "tags": ["close", "happy hour", "sit-down"]
+    }
+]

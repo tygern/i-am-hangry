@@ -6,7 +6,7 @@ require "json"
 
 class Hangry < Sinatra::Base
   get "/" do
-    authentication = YAML.load_file(File.expand_path("../config/access.yml", __dir__))
+    authentication = YAML.load_file(File.expand_path("config/access.yml", __dir__))
     consumer = OAuth::Consumer.new authentication["key"],
                                  authentication["secret"],
                                  {site: authentication["site"]}
@@ -19,6 +19,6 @@ class Hangry < Sinatra::Base
       list << {name: place["name"], tags: place["cuisine"]}
     end
 
-    haml :index, locals: {location: location, restaurants: restaurants.to_json}
+    erb :index, locals: {location: location, restaurants: restaurants.to_json}
   end
 end

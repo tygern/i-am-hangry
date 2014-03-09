@@ -1,0 +1,99 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #EBF1FF;
+}
+
+input {
+    border: none;
+    background: none;
+    padding-left: 15px;
+    margin-top: .2em;
+    width: 85%;
+    color: #D4E0F1;
+}
+
+::-webkit-input-placeholder {
+    color: #D4E0F1;
+    opacity: .6;
+}
+
+.input-wrapper .glyphicon {
+    width: 10%;
+    color: #D4E0F1;
+    text-align: right;
+    margin-top: .7em;
+}
+
+.input-wrapper {
+    width: 100%;
+    height: 2.9em;
+    margin-bottom: 1em;
+    border: 3px solid #D4E0F1;
+    border-radius: 7px;
+}
+
+.input-wrapper.green {
+    border-color: #00D4A4;
+}
+
+.input-wrapper.red {
+    border-color: #FE1E32;
+}
+
+input:focus {
+    outline: none;
+}
+
+h1 {
+    margin-bottom: .5em;
+}
+
+.jumbotron {
+    overflow-y: hidden;
+    background-color: #444A64;
+}
+
+.center {
+    text-align: center;
+}
+
+.item{
+    display: inline-block;
+    margin: 1em;
+    padding: .6em .8em .6em;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+.action {
+    cursor: pointer;
+}
+
+.glyphicon {
+    margin-right: .3em;
+}
+
+.data {
+    display: none;
+}
+
+.btn-warning {
+    background-color: #FFAA00;
+}
+
+.label-success {
+    background-color: #00D4A4;
+}
+
+.label-primary {
+    background-color: #8067D1;
+}
+
+.label-primary.match {
+    background-color: #FE1E32;
+}
+
+.label-info {
+    background-color: #00ACF1;
+    opacity: .8;
+}
