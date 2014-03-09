@@ -1,5 +1,7 @@
-module Hangry
-  class Hangry < Sinatra::Base
+require "sinatra"
 
+class Hangry < Sinatra::Base
+  get "/" do
+    "hello"
   end
 end
