@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    haml (4.0.5)
+      tilt
     oauth (0.4.7)
     rack (1.5.2)
     rack-protection (1.5.2)
@@ -15,5 +17,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  haml
   oauth
   sinatra

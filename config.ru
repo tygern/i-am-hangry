@@ -1,2 +1,2 @@
-require File.expand_path("lib/hangry/hangry", __dir__)
+require File.expand_path("lib/hangry", __dir__)
 run Hangry
