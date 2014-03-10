@@ -14,8 +14,6 @@ hangryApp.controller('PickerController', function ($scope, $http) {
     });
   });
 
-
-
   $scope.addTag = function addTag() {
     if ($scope.tagCollection.toggleMatches()) {
       $scope.clearSearch();

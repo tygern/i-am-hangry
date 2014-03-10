@@ -1,22 +1,19 @@
 Hangry.LocationService = function LocationService() {
   this.findLocation = function getLocation($scope) {
     var deferred = new $.Deferred();
-    navigator.geolocation.getCurrentPosition(this.positionSuccess, this.positionError, {timeout: 1});
-
-    setTimeout(function() {
+    var positionSuccess = function (position) {
+      $scope.restaurantUrl += "?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
       deferred.resolve();
-    }, 6000);
+    };
+
+    var positionError = function (deferred) {
+      deferred.resolve();
+    };
+
+    navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
 
     return deferred.promise();
   };
 
 
-  this.positionSuccess = function ($scope, deferred) {
-    $scope.restaurantUrl += "?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
-    deferred.resolve();
-  };
-
-  this.positionError = function (deferred) {
-    deferred.resolve();
-  };
 };
