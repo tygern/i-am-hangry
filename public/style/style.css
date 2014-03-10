@@ -97,3 +97,10 @@ h1 {
     background-color: #00ACF1;
     opacity: .8;
 }
+
+.waiting {
+  margin: 20px auto;
+  width:200px;
+  text-align: center;
+  color: #00ACF1;
+}

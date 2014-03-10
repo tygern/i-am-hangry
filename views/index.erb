@@ -8,6 +8,7 @@
     <title>Hangry - <%= location %></title>
     <link rel="stylesheet" href="style/bootstrap.min.css">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/waiting.css">
 
     <script src="js/vendor/jquery-2.0.3.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
@@ -46,8 +47,18 @@
 </div>
 
 
-<div class="tags container">
-    <div class="col-md-12">
+    <div class="tags container">
+      <div class="col-md-12">
+        <div class="waiting" ng-if="tagCollection.tags.length == 0">
+          Finding your location
+          <div class="bubblingG">
+            <span id="bubblingG_1"></span>
+            <span id="bubblingG_2"></span>
+            <span id="bubblingG_3"></span>
+          </div>
+        </div>
+
+
         <span ng-repeat="tag in tagCollection.tags | filter:{selected:true}">
             <span class="item action label label-primary {{tag.match ? 'match' : ''}}" ng-click="tagCollection.toggle(tag)">
                 <span class="glyphicon {{tag.match ? 'glyphicon-remove' : 'glyphicon-ok'}}"></span>
