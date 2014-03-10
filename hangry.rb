@@ -1,4 +1,5 @@
 require "sinatra"
+require "sinatra/assetpack"
 require "oauth"
 require "yaml"
 require "haml"
@@ -7,6 +8,24 @@ require "json"
 require_relative "lib/location_service"
 
 class Hangry < Sinatra::Base
+
+  register Sinatra::AssetPack
+
+  assets do
+    js :application, [
+      "/js/vendor/jquery-2.0.3.min.js",
+      "/js/vendor/bootstrap.min.js",
+      "/js/vendor/angular.min.js",
+      "/js/*.js"
+    ]
+
+    css :application, ["/css/*.css"]
+
+    js_compression :jsmin
+    css_compression :simple
+  end
+
+
   get "/" do
     location = "Boulder"
     erb :index, locals: {location: location}

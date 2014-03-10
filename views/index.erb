@@ -6,20 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>Hangry - <%= location %></title>
-    <link rel="stylesheet" href="style/bootstrap.min.css">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/waiting.css">
-
-    <script src="js/vendor/jquery-2.0.3.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/vendor/angular.min.js"></script>
-    <script src="js/application.js"></script>
-    <script src="js/location_service.js"></script>
-    <script src="js/choice.js"></script>
-    <script src="js/choice_collection.js"></script>
-    <script src="js/tag.js"></script>
-    <script src="js/tag_collection.js"></script>
-    <script src="js/controller.js"></script>
+    <%= css :application %>
+    <%= js :application %>
 </head>
 
 <body ng-controller="PickerController">
